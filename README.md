@@ -1,5 +1,7 @@
 # The Seed for adding the typescript supports
 
+> modified from the starter project which created by `quasar-cli@0.17.15`.
+
 ## Upgrade to babel 7.0
 
 See `package.json` and `.babelrc`.
