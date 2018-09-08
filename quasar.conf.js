@@ -37,18 +37,8 @@ module.exports = function (ctx) {
       // analyze: true,
       // extractCSS: false,
       extendWebpack (cfg) {
-        // Allow Typescript in Quasar-starter-kit https://github.com/quasarframework/quasar-cli/issues/64
-        // // added the coffee-script supports
-        // cfg.resolve.extensions.push('.coffee')
-        // // first rule is for Vue single file components
-        // cfg.module.rules[0].options.loaders.coffee = ['babel-loader', 'coffee-loader']
-        // cfg.module.rules.push({
-        //   test: /\.coffee$/,
-        //   loaders: ['babel-loader', 'coffee-loader'],
-        //   include: [__dirname + '/src']
-        // })
         extendTypescriptToWebpack(cfg)
-        console.log(util.inspect(cfg.module.rules, {depth: 6}))
+        // console.log(util.inspect(cfg.module.rules, {depth: 6}))
         cfg.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
