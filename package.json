@@ -1,0 +1,70 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "demo to ts",
+  "productName": "",
+  "cordovaId": "",
+  "author": {
+    "name": "Riceball LEE",
+    "email": "snowyu.lee@gmail.com",
+    "url": "https://riceball.me"
+  },
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.vue src",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "vue-class-component": "^6.2.0",
+    "vue-i18n": "^7.3.3",
+    "vue-property-decorator": "^7.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-function-sent": "^7.0.0",
+    "@babel/plugin-proposal-json-strings": "^7.0.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.0.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "babel-eslint": "^8.2.1",
+    "babel-loader": "^8.0.0",
+    "babel-plugin-transform-imports": "^1.5.1",
+    "devtron": "1.4.0",
+    "electron": "2.0.0",
+    "electron-builder": "^20.28.4",
+    "electron-debug": "1.5.0",
+    "electron-devtools-installer": "2.2.4",
+    "electron-packager": "^12.1.1",
+    "eslint": "^4.18.2",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-vue": "^4.3.0",
+    "quasar-cli": "^0.17.0",
+    "strip-ansi": "=3.0.1",
+    "ts-loader": "^5.0.0",
+    "typescript": "^3.0.3"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ]
+}
