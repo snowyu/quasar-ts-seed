@@ -4,7 +4,11 @@
 
 ## Upgrade to babel 7.0
 
-See `package.json` and `.babelrc`.
+Already upgraded. See `package.json` and `.babelrc`.
+
+```bash
+npx babel-upgrade --write
+```
 
 ## Package Manager
 
