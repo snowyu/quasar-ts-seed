@@ -30,6 +30,7 @@ module.exports = function (ctx) {
     ],
     supportIE: true,
     build: {
+      analyze: false, // Whether show the webpack bundle analyzer after build
       scopeHoisting: true,
       // vueRouterMode: 'history',
       // vueCompiler: true,
