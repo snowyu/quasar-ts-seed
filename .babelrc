@@ -22,7 +22,6 @@
     "@babel/plugin-proposal-json-strings",
     [
       "@babel/transform-runtime", {
-        // "corejs": 2,
         "regenerator": false
       }
     ]
