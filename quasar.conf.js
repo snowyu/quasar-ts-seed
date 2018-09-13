@@ -1,8 +1,12 @@
 // Configuration for your app
 const util = require('util')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 function extendTypescriptToWebpack(cfg) {
   // added the type-script supports
+  cfg.resolve.plugins = [
+    new TsconfigPathsPlugin({ configFile: "./tsconfig.json" })
+  ]
   cfg.resolve.extensions.push('.ts')
   cfg.module.rules.push({
     test: /\.ts$/,
