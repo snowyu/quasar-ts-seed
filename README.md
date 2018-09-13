@@ -2,7 +2,11 @@
 
 > modified from the starter project which created by `quasar-cli@0.17.15`.
 
-## Upgrade to babel 7.0
+* Vue with typescript supported
+* Upgraded to use babel 7.0
+* Typescript Declare files of the quasar and plugins injected properties.
+
+## Upgrade to use babel 7.0
 
 Already upgraded. See `package.json` and `.babelrc`.
 
