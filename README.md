@@ -18,6 +18,24 @@ export default class YourComponent extends Vue {
 }
 ```
 
+It's equivalent to
+
+```js
+export default {
+  props: {
+    propA: {
+      type: Number
+    },
+    propB: {
+      default: 'default value'
+    },
+    propC: {
+      type: [String, Boolean]
+    },
+  }
+}
+```
+
 ## Upgrade to use babel 7.0
 
 Already upgraded. See `package.json` and `.babelrc`.
