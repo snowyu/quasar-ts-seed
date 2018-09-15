@@ -55,6 +55,7 @@
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "^4.3.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",
     "preload-webpack-plugin": "^3.0.0-beta.2",
     "quasar-cli": "^0.17.17",
