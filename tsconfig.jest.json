@@ -1,13 +1,15 @@
 // tsconfig.json
 {
   "extends": "./tsconfig.base",
+  "esModuleInterop": true,
+  "module": "commonjs",
+  "skipLibCheck": true,
   "exclude": [
     "test.ts",
     "**/*.back",
     "**/*.disable",
     "**/*.disable.ts",
     "**/*.bak.ts",
-    "**/*.bakup.ts",
-    "**/*.spec.ts"
+    "**/*.bakup.ts"
   ]
 }

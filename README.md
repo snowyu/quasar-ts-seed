@@ -6,6 +6,7 @@
 * Upgraded to use babel 7.0
 * Typescript Declare files of the quasar and plugins injected properties.
 * Use [vue-class-component](https://github.com/vuejs/vue-class-component) and  [vue-property-decorators](https://github.com/kaorun343/vue-property-decorator) to define component
+* use [Jest](https://jestjs.io/) to unit test.
 
 ```ts
 import { Vue, Component, Prop } from 'vue-property-decorator'
