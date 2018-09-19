@@ -44,12 +44,12 @@ module.exports = function (ctx) {
       extendWebpack (cfg) {
         extendTypescriptToWebpack(cfg)
         // console.log(util.inspect(cfg.module.rules, {depth: 6}))
-        cfg.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules|quasar)/
-        })
+        // cfg.module.rules.push({
+        //   enforce: 'pre',
+        //   test: /\.(js|vue)$/,
+        //   loader: 'eslint-loader',
+        //   exclude: /(node_modules|quasar)/
+        // })
       }
     },
     devServer: {

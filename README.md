@@ -9,6 +9,7 @@
 * use [Jest](https://jestjs.io/) to unit test.
   * the quasar-cli known the .babelrc only, so I have to keep two babel config files, one(babel.config.js) for jest, .babelrc for quasar-cli
     * It's a quasar-cli bug.
+* **TODO: ** lint not work yet.
 
 ```ts
 import { Vue, Component, Prop } from 'vue-property-decorator'
