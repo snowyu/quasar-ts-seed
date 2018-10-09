@@ -3,7 +3,7 @@
 <template>
   <q-page class="flex flex-center">
     <q-list no-border>
-      <q-item class="greeting">Hello Decorator {{name}}{{exclamationMarks}}</q-item>
+      <q-item class="greeting">Hello Decorator {{title}}{{exclamationMarks}}</q-item>
       <q-btn @click="decrement">-</q-btn>
       <q-btn @click="increment">+</q-btn>
     </q-list>
@@ -15,7 +15,7 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component
 export default class HelloDecorator extends Vue {
-    @Prop() name!: string;
+    @Prop() title!: string;
     @Prop({default: 1}) initialEnthusiasm!: number;
     enthusiasm = this.initialEnthusiasm;
     increment() {

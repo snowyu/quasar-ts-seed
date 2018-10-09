@@ -2,7 +2,7 @@
 <template>
   <q-page class="flex flex-center">
     <q-list no-border>
-      <q-item class="greeting">Hello {{name}}{{exclamationMarks}}</q-item>
+      <q-item class="greeting">Hello {{title}}{{exclamationMarks}}</q-item>
       <q-btn @click="decrement">-</q-btn>
       <q-btn @click="increment">+</q-btn>
     </q-list>
@@ -14,7 +14,7 @@ import Vue from "vue";
 
 export default Vue.extend({
     name: 'Hello',
-    props: {name, initialEnthusiasm: {default: 1, type: Number}},
+    props: {title: {type: String}, initialEnthusiasm: {default: 1, type: Number}},
     data() {
         return {
             enthusiasm: this.initialEnthusiasm,
