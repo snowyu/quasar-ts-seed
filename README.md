@@ -9,7 +9,8 @@
 * use [Jest](https://jestjs.io/) to unit test.
   * the quasar-cli known the .babelrc only, so I have to keep two babel config files, one(babel.config.js) for jest, .babelrc for quasar-cli
     * It's a quasar-cli bug.
-* **TODO: ** lint not work yet.
+* **TODO:** lint not work yet.
+  * I have not found a way to support ts and js both.
 
 ```ts
 import { Vue, Component, Prop } from 'vue-property-decorator'
@@ -237,4 +238,35 @@ export default Vue.extend({
 });
 </script>
 ```
+
+
+## E2E test
+
+```bash
+npm install --save-dev jest-puppeteer puppeteer
+```
+
+Update your Jest configuration:
+
+```js
+{
+  "preset": "jest-puppeteer"
+}
+```
+
+Use Puppeteer in your tests:
+
+```js
+describe('Google', () => {
+  beforeAll(async () => {
+    await page.goto('https://google.com')
+  })
+
+  it('should display "google" text on page', async () => {
+    await expect(page).toMatch('google')
+  })
+})
+```
+
+More detail: https://github.com/smooth-code/jest-puppeteer
 
