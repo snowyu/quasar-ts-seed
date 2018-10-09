@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hello.vue matches snapshot 1`] = `
+<q-page class="flex flex-center">
+  <q-list no-border="">
+    <q-item class="greeting">Hello snap!</q-item>
+    <q-btn>-</q-btn>
+    <q-btn>+</q-btn>
+  </q-list>
+</q-page>
+`;
