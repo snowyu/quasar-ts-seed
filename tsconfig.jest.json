@@ -1,6 +1,29 @@
-// tsconfig.json
 {
-  "extends": "./tsconfig.base",
+  "compilerOptions": {
+    "sourceMap": true,
+    "target": "es5",
+    "strict": true,
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "es2015",
+    "lib": [
+      "es2015",
+      "es2017",
+      "dom"
+    ],
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "paths": {
+      "@libs/*": ["libs/*"],
+      "@plugins/*": ["plugins/*"],
+      "@env": ["environment"],
+      "@env/*": ["environment/*"]
+    }
+  },
+  "include": [
+    "./src/**/*"
+  ],
   "esModuleInterop": true,
   "module": "commonjs",
   "skipLibCheck": true,
