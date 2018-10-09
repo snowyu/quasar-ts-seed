@@ -27,6 +27,10 @@ module.exports = async function() {
   quasarConfig.compile()
   const cfg = quasarConfig.getWebpackConfig()
   cfg.mode = 'development'
+  // cfg.resolve = Object.assign({
+  //   'vue$': 'vue/dist/vue.esm.js',
+  //   '@': path.resolve(__dirname, 'src')
+  // }, cfg.resolve)
   // console.log(cfg)
   return cfg
 }
