@@ -23,9 +23,9 @@ module.exports = {
   // ],
   "globals": {
     "ts-jest": {
-      "enableTsDiagnostics": true,
+      "diagnostics": true,
       // "skipBabel": true,
-      "tsConfigFile": "tsconfig.jest.json"
+      "tsConfig": "tsconfig.jest.json"
     }
   }
 }
