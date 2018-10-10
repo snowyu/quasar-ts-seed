@@ -1,17 +1,21 @@
 // Configuration for your app
 const util = require('util')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const TSCONFIG = __dirname + '/tsconfig.build.json';
 
 function extendTypescriptToWebpack(cfg) {
   // added the type-script supports
   cfg.resolve.plugins = [
-    new TsconfigPathsPlugin({ configFile: "./tsconfig.json" })
+    new TsconfigPathsPlugin({ configFile: TSCONFIG })
   ]
   cfg.resolve.extensions.push('.ts')
   cfg.module.rules.push({
     test: /\.ts$/,
     loader: 'ts-loader',
-    options: { appendTsSuffixTo: [/\.vue$/] }
+    options: {
+      configFile: TSCONFIG,
+      appendTsSuffixTo: [/\.vue$/]
+    }
   })
 }
 

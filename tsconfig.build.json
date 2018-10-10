@@ -1,4 +1,4 @@
-// tsconfig.json for visual code editor
+// tsconfig.json
 {
   "extends": "./tsconfig.base",
   "exclude": [
@@ -8,5 +8,6 @@
     "**/*.disable.ts",
     "**/*.bak.ts",
     "**/*.bakup.ts",
+    "**/*.spec.ts"
   ]
 }
