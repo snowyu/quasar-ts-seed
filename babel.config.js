@@ -32,7 +32,15 @@ module.exports = function (api) {
     ],
     "env": {
       "test": {
-        "plugins": ["@babel/plugin-transform-modules-commonjs"]
+        "plugins": ["@babel/plugin-transform-modules-commonjs"],
+        "presets": [
+          ["@babel/preset-env", {
+            "modules": "commonjs",
+            "targets": {
+              "node": "current"
+            }
+          }]
+        ]
       }
     },
     "comments": false
