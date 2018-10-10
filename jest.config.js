@@ -1,7 +1,32 @@
 const {defaults} = require('jest-config');
+// const prepare = require('./webpack.config');
+
 
 module.exports = {
+  // globalSetup: "./jest-global-setup",
+  setupFiles: ["./jest-global-setup.js"],
+  "setupTestFrameworkScriptFile": "jest-extended",
+  "bail": true,
+  "verbose": true,
+  // 'testEnvironment': 'jsdom',
   "collectCoverage": true,
+  'collectCoverageFrom': [
+    '!<rootDir>/jest-global-setup.js',
+    '!<rootDir>/src/(router|plugins|i18n)/**',
+    '<rootDir>/src/**/*.{js,jsx,ts,tsx,vue}',
+  ],
+  'coverageThreshold': {
+    'global': {
+      'branches': 50,
+      'functions': 50,
+      'lines': 50,
+      'statements': 50
+    },
+    './src/components/': {
+      'branches': 40,
+      'statements': 40
+    },
+  },
   "transform": {
     "^.+\\.jsx?$": "babel-jest",
     "^.+\\.tsx?$": "ts-jest",
@@ -14,6 +39,7 @@ module.exports = {
   "moduleNameMapper": {
     // support the same @ -> src alias mapping in source code
     "^@/(.*)$": "<rootDir>/src/$1",
+    'quasar': 'quasar-framework/dist/umd/quasar.mat.umd.min.js',
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
     // "\\.(css|less|sass|stylus)$": "<rootDir>/__mocks__/styleMock.js",
     "\\.(css|less|sass|stylus)$": "identity-obj-proxy",
@@ -22,9 +48,10 @@ module.exports = {
   "snapshotSerializers": [
     "<rootDir>/node_modules/jest-serializer-vue"
   ],
+  // modulePaths: ["<rootDir>/node_modules",],
   // "moduleDirectories": [
   //   "node_modules",
-  //   "src"
+  //   "node_modules/quasar-cli/node_modules",
   // ],
   "globals": {
     "vue-jest": {
