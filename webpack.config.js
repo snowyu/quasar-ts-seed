@@ -5,6 +5,7 @@ const argv = {
 }
 
 const QuasarConfig = require('quasar-cli/lib/quasar-config');
+const QuasarGenerator = require('quasar-cli/lib/generator');
 const quasarConfig = new QuasarConfig({
   theme: argv.theme,
   mode: argv.mode,
@@ -16,6 +17,7 @@ const quasarConfig = new QuasarConfig({
 })
 
 module.exports = async function() {
+  console.log('webpack config....')
   try {
     await quasarConfig.prepare()
   }
@@ -25,12 +27,10 @@ module.exports = async function() {
     process.exit(1)
   }
   quasarConfig.compile()
+  const generator = new QuasarGenerator(quasarConfig)
+  generator.prepare()
   const cfg = quasarConfig.getWebpackConfig()
   cfg.mode = 'development'
-  // cfg.resolve = Object.assign({
-  //   'vue$': 'vue/dist/vue.esm.js',
-  //   '@': path.resolve(__dirname, 'src')
-  // }, cfg.resolve)
   // console.log(cfg)
   return cfg
 }
