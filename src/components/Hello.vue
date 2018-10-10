@@ -1,12 +1,10 @@
 <!-- src/components/Hello.vue -->
 <template>
-  <q-page class="flex flex-center">
     <q-list no-border>
       <q-item class="greeting">Hello {{title}}{{exclamationMarks}}</q-item>
-      <q-btn @click="decrement">-</q-btn>
-      <q-btn @click="increment">+</q-btn>
+      <q-btn id="btnDec" @click="decrement">-</q-btn>
+      <q-btn id="btnInc" @click="increment">+</q-btn>
     </q-list>
-  </q-page>
 </template>
 
 <script lang="ts">
