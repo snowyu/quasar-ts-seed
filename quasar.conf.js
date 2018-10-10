@@ -19,7 +19,7 @@ function extendTypescriptToWebpack(cfg) {
   })
 }
 
-module.exports = function (ctx) {
+function getConfig(ctx) {
   return {
     // app plugins (/src/plugins)
     plugins: [
@@ -163,4 +163,9 @@ module.exports = function (ctx) {
       }
     }
   }
+}
+
+module.exports = function (ctx) {
+  const result = getConfig(ctx)
+  return result
 }
