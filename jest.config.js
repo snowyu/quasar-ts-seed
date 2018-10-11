@@ -33,6 +33,12 @@ module.exports = {
     "^.+\\.vue$": "vue-jest",
     // "\\.(gql|graphql)$": "jest-transform-graphql",
   },
+  'transformIgnorePatterns': [
+    'node_modules/core-js',
+    'node_modules/babel-runtime',
+    'node_modules/lodash',
+    'node_modules/vue'
+  ],
   "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
   // moduleFileExtensions: ['js', 'json', 'ts', 'tsx', 'vue'],
   moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx', 'vue'],
