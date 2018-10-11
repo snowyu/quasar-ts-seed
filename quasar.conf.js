@@ -19,6 +19,13 @@ function extendTypescriptToWebpack(cfg) {
   })
 }
 
+function extendPugToWebpack(cfg) {
+  cfg.module.rules.push({
+    test: /\.pug$/,
+    loader: 'pug-plain-loader'
+  })
+}
+
 function getConfig(ctx) {
   return {
     // app plugins (/src/plugins)
@@ -47,6 +54,7 @@ function getConfig(ctx) {
       // extractCSS: false,
       extendWebpack (cfg) {
         extendTypescriptToWebpack(cfg)
+        extendPugToWebpack(cfg)
         // console.log(util.inspect(cfg.module.rules, {depth: 6}))
         // cfg.module.rules.push({
         //   enforce: 'pre',
@@ -77,7 +85,10 @@ function getConfig(ctx) {
         'QListHeader',
         'QItem',
         'QItemMain',
-        'QItemSide'
+        'QItemSide',
+        'QChatMessage',
+        'QScrollArea',
+        'QScrollObservable',
       ],
       directives: [
         'Ripple'
