@@ -40,6 +40,10 @@
           <q-item-side icon="code" />
           <q-item-main label="Typescript" sublabel="HelloDecorator" />
         </q-item>
+        <q-item to="/chat">
+          <q-item-side icon="code" />
+          <q-item-main label="Typescript" sublabel="Chat" />
+        </q-item>
         <q-list-header>Essential Links</q-list-header>
         <q-item @click.native="openURL('http://quasar-framework.org')">
           <q-item-side icon="school" />
