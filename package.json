@@ -16,10 +16,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "vue-class-component": "^6.2.0",
-    "vue-i18n": "^7.3.3",
-    "vue-infinite-loading": "github:snowyu/vue-infinite-loading",
-    "vue-property-decorator": "^7.2.0"
+    "vue-i18n": "^7.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -75,7 +72,9 @@
     "ts-node": "^7.0.1",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
     "typescript": "3.0.3",
+    "vue-class-component": "^6.2.0",
     "vue-jest": "^2.6.0",
+    "vue-property-decorator": "^7.2.0",
     "vue-template-compiler": "^2.5.17",
     "webpack-cli": "^3.1.2"
   },
