@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-layout-header>
+    <q-header>
       <q-toolbar
         color="primary"
         :glossy="$q.theme === 'mat'"
@@ -21,11 +21,10 @@
           <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
         </q-toolbar-title>
       </q-toolbar>
-    </q-layout-header>
+    </q-header>
 
-    <q-layout-drawer
+    <q-drawer
       v-model="leftDrawerOpen"
-      :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null"
     >
       <q-list
         no-border
@@ -33,40 +32,83 @@
         inset-delimiter
       >
         <q-item to="/h">
-          <q-item-side icon="code" />
-          <q-item-main label="Typescript" sublabel="Hello" />
+          <q-item-section avatar>
+            <q-icon color="primary" name="code" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Typescript</q-item-label>
+            <q-item-label caption>Hello</q-item-label>
+          </q-item-section>
         </q-item>
         <q-item to="/hd">
-          <q-item-side icon="code" />
-          <q-item-main label="Typescript" sublabel="HelloDecorator" />
+          <q-item-section avatar>
+            <q-icon name="code" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Typescript</q-item-label>
+            <q-item-label caption>HelloDecorator</q-item-label>
+          </q-item-section>
         </q-item>
         <q-item to="/chat">
-          <q-item-side icon="code" />
-          <q-item-main label="Typescript" sublabel="Chat" />
+          <q-item-section avatar>
+            <q-icon name="code" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Typescript</q-item-label>
+            <q-item-label caption>Chat</q-item-label>
+          </q-item-section>
         </q-item>
-        <q-list-header>Essential Links</q-list-header>
+
+        <q-separator spaced />
+        <q-item-label header>Essential Links</q-item-label>
+
         <q-item @click.native="openURL('http://quasar-framework.org')">
-          <q-item-side icon="school" />
-          <q-item-main label="Docs" sublabel="quasar-framework.org" />
+          <q-item-section avatar>
+            <q-icon name="school" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Docs</q-item-label>
+            <q-item-label caption>quasar-framework.org</q-item-label>
+          </q-item-section>
         </q-item>
         <q-item @click.native="openURL('https://github.com/quasarframework/')">
-          <q-item-side icon="code" />
-          <q-item-main label="GitHub" sublabel="github.com/quasarframework" />
+          <q-item-section avatar>
+            <q-icon name="code" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>GitHub</q-item-label>
+            <q-item-label caption>github.com/quasarframework</q-item-label>
+          </q-item-section>
         </q-item>
         <q-item @click.native="openURL('https://discord.gg/5TDhbDg')">
-          <q-item-side icon="chat" />
-          <q-item-main label="Discord Chat Channel" sublabel="https://discord.gg/5TDhbDg" />
+          <q-item-section avatar>
+            <q-icon name="chat" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Discord Chat Channel</q-item-label>
+            <q-item-label caption>https://discord.gg/5TDhbDg</q-item-label>
+          </q-item-section>
         </q-item>
         <q-item @click.native="openURL('http://forum.quasar-framework.org')">
-          <q-item-side icon="record_voice_over" />
-          <q-item-main label="Forum" sublabel="forum.quasar-framework.org" />
+          <q-item-section avatar>
+            <q-icon name="record_voice_over" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Forum</q-item-label>
+            <q-item-label caption>forum.quasar-framework.org</q-item-label>
+          </q-item-section>
         </q-item>
         <q-item @click.native="openURL('https://twitter.com/quasarframework')">
-          <q-item-side icon="rss feed" />
-          <q-item-main label="Twitter" sublabel="@quasarframework" />
+          <q-item-section avatar>
+            <q-icon name="rss feed" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Twitter</q-item-label>
+            <q-item-label caption>@quasarframework</q-item-label>
+          </q-item-section>
         </q-item>
       </q-list>
-    </q-layout-drawer>
+    </q-drawer>
 
     <q-page-container>
       <router-view />

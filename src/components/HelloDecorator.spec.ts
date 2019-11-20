@@ -8,7 +8,7 @@ import { shallowMount, mount, createLocalVue } from '@vue/test-utils';
 import HelloDecorator from './HelloDecorator.vue';
 
 describe('HelloDecorator.vue', () => {
-  it('renders name test', () => {
+  it('renders HelloDecorator test', () => {
     // const localVue = createLocalVue();
     // localVue.use(Quasar, { components: ['QBtn']});
     const l = 1;

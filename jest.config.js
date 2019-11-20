@@ -1,73 +1,84 @@
-const {defaults} = require('jest-config');
-// const prepare = require('./webpack.config');
-
-
 module.exports = {
-  // globalSetup: "./jest-global-setup",
-  setupFiles: ["./jest-global-setup.js"],
-  "setupTestFrameworkScriptFile": "jest-extended",
-  "bail": true,
-  "verbose": true,
-  // 'testEnvironment': 'jsdom',
-  "collectCoverage": true,
-  'collectCoverageFrom': [
-    '!<rootDir>/jest-global-setup.js',
-    '!<rootDir>/src/(router|plugins|i18n)/**',
-    '<rootDir>/src/**/*.{js,jsx,ts,tsx,vue}',
-  ],
-  'coverageThreshold': {
-    'global': {
-      'branches': 50,
-      'functions': 50,
-      'lines': 50,
-      'statements': 50
-    },
-    './src/components/': {
-      'branches': 40,
-      'statements': 40
-    },
-  },
-  "transform": {
-    "^.+\\.jsx?$": "babel-jest",
-    "^.+\\.tsx?$": "ts-jest",
-    "^.+\\.vue$": "vue-jest",
-    // "\\.(gql|graphql)$": "jest-transform-graphql",
-  },
-  'transformIgnorePatterns': [
-    'node_modules/core-js',
-    'node_modules/babel-runtime',
-    'node_modules/lodash',
-    'node_modules/vue'
-  ],
-  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-  // moduleFileExtensions: ['js', 'json', 'ts', 'tsx', 'vue'],
-  moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx', 'vue'],
-  "moduleNameMapper": {
-    // support the same @ -> src alias mapping in source code
-    "^@/(.*)$": "<rootDir>/src/$1",
-    'quasar': 'quasar-framework/dist/umd/quasar.mat.umd.min.js',
-    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-    // "\\.(css|less|sass|stylus)$": "<rootDir>/__mocks__/styleMock.js",
-    "\\.(css|less|sass|stylus)$": "identity-obj-proxy",
-  },
-  // serializer for snapshots
-  "snapshotSerializers": [
-    "<rootDir>/node_modules/jest-serializer-vue"
-  ],
-  // modulePaths: ["<rootDir>/node_modules",],
-  // "moduleDirectories": [
-  //   "node_modules",
-  //   "node_modules/quasar-cli/node_modules",
-  // ],
-  "globals": {
+  globals: {
+    __DEV__: true,
     "vue-jest": {
       // "babelConfig": ".babelrc",
       "tsConfig": __dirname + "/tsconfig.jest.json"
     },
     "ts-jest": {
+      // "useBabelrc": true,
       "diagnostics": true,
       // "skipBabel": true,
       "tsConfig": "tsconfig.jest.json"
     }
-  }
+  },
+  // 'testEnvironment': 'jsdom-with-canvas',
+  setupFilesAfterEnv: [
+    'jest-extended',
+    '<rootDir>/test/jest/jest.setup.js'
+  ],
+  noStackTrace: true,
+  bail: true,
+  cache: false,
+  verbose: true,
+  collectCoverage: false,
+  coverageDirectory: '<rootDir>/test/jest/coverage',
+  collectCoverageFrom: [
+    '!<rootDir>/src/(assets|environment|types|router|plugins|i18n)/**',
+    '<rootDir>/src/**/*.vue',
+    '<rootDir>/src/**/*.js',
+    '<rootDir>/src/**/*.ts',
+    '<rootDir>/src/**/*.jsx'
+  ],
+  coverageThreshold: {
+    global: {
+    //  branches: 50,
+    //  functions: 50,
+    //  lines: 50,
+    //  statements: 50
+    }
+  },
+  // "testRegex": "src/.*(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+  testMatch: [
+    // '<rootDir>/test/jest/__tests__/**/*.spec.js',
+    // '<rootDir>/test/jest/__tests__/**/*.test.js',
+    '<rootDir>/src/**/__tests__/*_jest.spec.(t|j)s',
+    '<rootDir>/src/**/*.(spec|test).(t|j)s',
+    // '<rootDir>/src/**/__tests__/*_jest.spec.ts',
+    '<rootDir>/test/jest/__tests__/**/*.(spec|test).(t|j)s',
+    // '<rootDir>/test/jest/__tests__/**/*.test.js',
+  ],
+  moduleFileExtensions: [
+    'vue',
+    'js',
+    'jsx',
+    'json',
+    'ts',
+    'tsx'
+  ],
+  moduleNameMapper: {
+    "^@env/?(.*)$": "<rootDir>/src/environment/$1",
+    "^@libs/(.*)$":  "<rootDir>/src/libs/$1",
+    '^vue$': '<rootDir>/node_modules/vue/dist/vue.common.js',
+    '^test-utils$': '<rootDir>/node_modules/@vue/test-utils/dist/vue-test-utils.js',
+    '^quasar$': '<rootDir>/node_modules/quasar/dist/quasar.common.js',
+    '^~/(.*)$': '<rootDir>/$1',
+    '^src/(.*)$': '<rootDir>/src/$1',
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/jest/utils/fileMock.js",
+   "\\.(css|less|sass|stylus)$": "identity-obj-proxy",
+  },
+  transform: {
+    "^.+\\.tsx?$": "ts-jest",
+    '.*\\.vue$': 'vue-jest',
+    '.*\\.jsx?$': 'babel-jest',
+    '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
+    // "\\.(gql|graphql)$": "jest-transform-graphql",
+  },
+  transformIgnorePatterns: [
+    // '/node_modules/(?!@ionic-native).+\\.js$',
+    "<rootDir>/node_modules/(?!@ngrx|@ionic-native|@ionic|quasar/lang)",
+  ],
+  snapshotSerializers: [
+    '<rootDir>/node_modules/jest-serializer-vue'
+  ]
 }

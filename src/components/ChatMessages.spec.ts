@@ -6,13 +6,15 @@
 import { shallowMount, mount, createLocalVue } from '@vue/test-utils';
 // import * as Quasar from 'quasar';
 import ChatMessages from './ChatMessages.vue';
+import { localVue } from "../../test/jest/utils";
 
-describe('Hello.vue', () => {
+describe('ChatMessages.vue', () => {
+  const wrapper = mount(ChatMessages, {
+    localVue
+  })
+  const vm = wrapper.vm
   it('renders', (done) => {
-    const wrapper = mount(ChatMessages);
-    const vm = wrapper.vm;
     const vItems = wrapper.findAll('.q-message');
-    // console.log(wrapper.html())
     expect(vItems).toHaveLength(24);
     const vScroll = wrapper.find('.scroll');
     expect((vm.$refs.infiniteLoading as any).scrollParent).toStrictEqual(vScroll.element);

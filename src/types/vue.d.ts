@@ -4,7 +4,7 @@ interface IQuasarVue {
   version: string;
   theme: string;
   platform: any;
-  i18n: any;
+  lang: any;
   cordova: any;
   electron: any;
 }

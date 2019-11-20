@@ -1,48 +1,18 @@
+const fs = require('fs-extra')
+let extend = undefined
 
-module.exports = function (api) {
-  api.cache(true)
-  return {
-    "sourceMaps": "inline",
-    "presets": [
-      [
-        "@babel/preset-env", {
-          "modules": false,
-          "loose": false,
-          "useBuiltIns": "usage"
-        }
-      ]
-    ],
-    "plugins": [
-      // Stage 2
-      ["@babel/plugin-proposal-decorators", { "legacy": true }],
-      "@babel/plugin-proposal-function-sent",
-      "@babel/plugin-proposal-export-namespace-from",
-      "@babel/plugin-proposal-numeric-separator",
-      "@babel/plugin-proposal-throw-expressions",
-      // Stage 3
-      "@babel/plugin-syntax-dynamic-import",
-      "@babel/plugin-syntax-import-meta",
-      ["@babel/plugin-proposal-class-properties", { "loose": false }],
-      "@babel/plugin-proposal-json-strings",
-      [
-        "@babel/transform-runtime", {
-          "regenerator": false
-        }
-      ]
-    ],
-    "env": {
-      "test": {
-        "plugins": ["@babel/plugin-transform-modules-commonjs"],
-        "presets": [
-          ["@babel/preset-env", {
-            "modules": "commonjs",
-            "targets": {
-              "node": "current"
-            }
-          }]
-        ]
-      }
-    },
-    "comments": false
-  }
+/**
+ * The .babelrc file has been created to assist Jest for transpiling.
+ * You should keep your application's babel rules in this file.
+ */
+
+if (fs.existsSync('./.babelrc')) {
+  extend = './.babelrc'
+}
+
+module.exports = {
+  presets: [
+    '@quasar/babel-preset-app'
+  ],
+  extends: extend
 }

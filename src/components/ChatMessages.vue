@@ -224,6 +224,6 @@ export default class ChatMessages extends Vue {
 
 <style lang="stylus">
 // https://quasar-framework.org/components/stylus-variables.html
-@import '~variables'
+// @import '~variables'
 
 </style>

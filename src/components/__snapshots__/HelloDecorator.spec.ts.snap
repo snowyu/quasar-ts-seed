@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HelloDecorator.vue matches snapshot 1`] = `
-<qlist-stub noborder="true">
-  <qitem-stub tag="div" class="greeting">Hello Decorator snap!</qitem-stub>
-  <qbtn-stub align="center" id="btnDec">-</qbtn-stub>
-  <qbtn-stub align="center" id="btnInc">+</qbtn-stub>
-</qlist-stub>
+<q-list no-border="">
+  <q-item class="greeting">Hello Decorator snap!</q-item>
+  <q-btn id="btnDec">-</q-btn>
+  <q-btn id="btnInc">+</q-btn>
+</q-list>
 `;

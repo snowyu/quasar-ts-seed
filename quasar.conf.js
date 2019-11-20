@@ -1,13 +1,14 @@
 // Configuration for your app
-const util = require('util')
+const util = require('util');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const TSCONFIG = __dirname + '/tsconfig.build.json';
 
 function extendTypescriptToWebpack(cfg) {
-  // added the type-script supports
   cfg.resolve.plugins = [
+    // ts paths mapper for webpack
     new TsconfigPathsPlugin({ configFile: TSCONFIG })
   ]
+  // added the type-script supports
   cfg.resolve.extensions.push('.ts')
   cfg.module.rules.push({
     test: /\.ts$/,
@@ -24,87 +25,113 @@ function extendPugToWebpack(cfg) {
     test: /\.pug$/,
     loader: 'pug-plain-loader'
   })
+  // cfg.module.rules.push({
+  //   test: /\.less$/,
+  //   use: [
+  //     'vue-style-loader',
+  //     'css-loader',
+  //     'less-loader'
+  //   ]
+  // })
 }
 
 function getConfig(ctx) {
   return {
-    // app plugins (/src/plugins)
-    plugins: [
+    // app boot file (/src/boot)
+    // --> boot files are part of "main.js"
+    boot: [
+      // 'rx',
       'i18n',
-      'axios'
+      'axios',
     ],
+
     css: [
       'app.styl'
     ],
+
     extras: [
-      ctx.theme.mat ? 'roboto-font' : null,
-      'material-icons' // optional, you are not bound to it
-      // 'ionicons',
-      // 'mdi',
-      // 'fontawesome'
+      'roboto-font',
+      'material-icons', // optional, you are not bound to it
+      'ionicons-v4',
+      // 'mdi-v3',
+      // 'fontawesome-v5',
+      // 'eva-icons',
+      // 'themify',
     ],
-    supportIE: true,
+
+    // framework: 'all', // --- includes everything; for dev only!
+    framework: {
+      cssAddon: true,
+      components: [
+        'QLayout',
+        'QHeader',
+        'QFooter',
+        'QDrawer',
+        'QDialog',
+        'QPageContainer',
+        'QPage',
+        'QPageSticky',
+        'QPopupProxy',
+        'QToolbar',
+        'QToolbarTitle',
+        'QBtn',
+        'QIcon',
+        'QList',
+        'QImg',
+        'QItem',
+        'QItemSection',
+        'QItemLabel',
+        'QSeparator',
+        'QCard',
+        'QCardSection',
+        'QCardActions',
+        'QChatMessage',
+        'QExpansionItem',
+        'QScrollArea',
+        'QScrollObserver',
+      ],
+
+      directives: [
+        'Ripple',
+      ],
+
+      // Quasar plugins
+      plugins: [
+        'Notify'
+      ]
+
+      // iconSet: 'ionicons-v4'
+      // lang: 'de' // Quasar language
+    },
+
+    supportIE: false,
+
     build: {
-      analyze: false, // Whether show the webpack bundle analyzer after build
       scopeHoisting: true,
       // vueRouterMode: 'history',
-      // vueCompiler: true,
+      vueCompiler: true,
       // gzip: true,
       // analyze: true,
       // extractCSS: false,
       extendWebpack (cfg) {
         extendTypescriptToWebpack(cfg)
         extendPugToWebpack(cfg)
-        // console.log(util.inspect(cfg.module.rules, {depth: 6}))
-        // cfg.module.rules.push({
-        //   enforce: 'pre',
-        //   test: /\.(js|vue)$/,
-        //   loader: 'eslint-loader',
-        //   exclude: /(node_modules|quasar)/
-        // })
       }
     },
+
     devServer: {
       // https: true,
       // port: 8080,
       open: true // opens browser window automatically
     },
-    // framework: 'all' --- includes everything; for dev only!
-    framework: {
-      components: [
-        'QLayout',
-        'QLayoutHeader',
-        'QLayoutDrawer',
-        'QPageContainer',
-        'QPage',
-        'QToolbar',
-        'QToolbarTitle',
-        'QBtn',
-        'QIcon',
-        'QList',
-        'QListHeader',
-        'QItem',
-        'QItemMain',
-        'QItemSide',
-        'QChatMessage',
-        'QScrollArea',
-        'QScrollObservable',
-      ],
-      directives: [
-        'Ripple'
-      ],
-      // Quasar plugins
-      plugins: [
-        'Notify'
-      ]
-      // iconSet: ctx.theme.mat ? 'material-icons' : 'ionicons'
-      // i18n: 'de' // Quasar language
-    },
+
     // animations: 'all' --- includes all animations
     animations: [],
+
     ssr: {
       pwa: false
     },
+
     pwa: {
       // workboxPluginMode: 'InjectManifest',
       // workboxOptions: {},
@@ -145,11 +172,11 @@ function getConfig(ctx) {
         ]
       }
     },
+
     cordova: {
-      // id: 'org.cordova.quasar.app' // see package.json cordovaId
-      // iosStatusBarPadding: true/false, // add the dynamic top padding on iOS mobile devices
-      // backButtonExit: true/false // Quasar handles app exit on mobile phone back button
+      // id: 'org.cordova.quasar.app'
     },
+
     electron: {
       // bundler: 'builder', // or 'packager'
       extendWebpack (cfg) {
@@ -178,5 +205,11 @@ function getConfig(ctx) {
 
 module.exports = function (ctx) {
   const result = getConfig(ctx)
-  return result
+  if (ctx.dev) {
+    result.build.env = {
+      // for [axios-extensions](https://github.com/kuitos/axios-extensions)
+      LOGGER_LEVEL: JSON.stringify('info'),
+    }
+  }
+  return result;
 }
