@@ -4,7 +4,7 @@
  */
 
 import { mount, createLocalVue, shallowMount } from '@vue/test-utils'
-import { mountQuasar } from '~/test/jest/utils'
+import { localVue, createLocalVueQuasar } from '~/test/jest/utils'
 import QBUTTON from './demo/QBtn-demo.vue'
 import * as All from 'quasar'
 // import Quasar, { Qbtn } from 'quasar'
@@ -28,8 +28,8 @@ describe('Mount Quasar', () => {
   //   }
   // })
   // const vm = wrapper.vm
-  const localVue = createLocalVue()
-  localVue.use(Quasar, { components }) // , lang: langEn
+  const localVue = createLocalVueQuasar()
+  // localVue.use(Quasar, { components }) // , lang: langEn
 
   const wrapper = mount(QBUTTON, {
     localVue
